@@ -1,0 +1,27 @@
+[package]
+name            = "embedded-astar"
+version         = "0.1.0"
+edition         = "2024"
+authors         = ["Jorge Andre Castro <georgeandrec@gmail.com>"]
+description     = "Bibliothèque de recherche de chemin A* no_std pour systèmes embarqués — zéro allocation, dimensions const-génériques."
+documentation   = "https://docs.rs/embedded-astar"
+readme          = "README.md"
+repository      = "https://github.com/jorgeandrecastro/embedded-astar"
+license         = "GPL-2.0-or-later"
+keywords        = ["embedded", "pathfinding", "astar", "no-std", "heapless"]
+categories      = ["embedded", "no-std", "algorithms"]
+exclude         = [".github", "assets"]
+
+[lib]
+name = "embedded_astar"
+path = "src/lib.rs"
+
+[dependencies]
+heapless = { version = "0.9", default-features = false }
+
+[profile.release]
+opt-level      = "z"
+lto            = true
+codegen-units  = 1
+panic          = "abort"
+strip          = true
